@@ -20,5 +20,47 @@ Rehome your Python scripts into nice interconnected modules
 pip install rehome
 ```
 
+## Usage
+
+The CLI allows you to instantiate the `Rehome` class central to this package directly.
+
+```sh
+usage: rehome [-h] [-p [PROTECT ...]] [-g [GROUP ...]] [-d] target
+
+Rehome(target: pathlib.Path, protect: list[str] = <factory>, group: list[str] = <factory>, debug:
+bool = False)
+
+positional arguments:
+  target
+
+options:
+  -h, --help            show this help message and exit
+  -p [PROTECT ...], --protect [PROTECT ...]
+                        (default: <factory>)
+  -g [GROUP ...], --group [GROUP ...]
+                        (default: <factory>)
+  -d, --debug           (default: False)
+```
+
+### Protected names
+
+`-p` specifies names to protect, i.e. to keep in the source file
+
+```sh
+rehome foo.py -p main
+```
+
+...protects the name `main`, and ensures it will stay in the source file
+
+### Groups
+
+`-g` specifies groups (_each_ argument is a group, separated by spaces)
+
+```sh
+rehome foo.py -g "hand glove" "foot sock"
+```
+
+...creates two groups of names: `["hand", "glove"]` and `["foot", "sock"]`
+
 > _rehome_ is available from [PyPI](https://pypi.org/project/rehome), and
 > the code is on [GitHub](https://github.com/lmmx/rehome)
